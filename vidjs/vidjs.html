@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>stream</title>
+  
+  <!--
+
+  Uses the latest versions of video.js and videojs-http-streaming.
+
+  To use specific versions, please change the URLs to the form:
+
+  <link href="https://unpkg.com/video.js@6.7.1/dist/video-js.css" rel="stylesheet">
+  <script src="https://unpkg.com/video.js@6.7.1/dist/video.js"></script>
+  <script src="https://unpkg.com/@videojs/http-streaming@0.9.0/dist/videojs-http-streaming.js"></script>
+
+  -->
+
+  <link href="video-js.css" rel="stylesheet">
+  <style>
+    .iframe  {
+      overflow: hidden;
+      resize: both;
+    }
+
+
+:root {
+color-scheme: light dark;
+overflow:clipped;
+}
+body {
+overflow: hidden;
+}
+#yois { display: none;}
+#but { display: none;}
+#togglePipButton { display: none;}
+.mdi-star{
+  animation:fade2 1s linear;
+  display:table;
+    width:auto;
+    position:relative;
+    width:50%;
+    color: white;
+    
+}
+.mdi-star-outline{
+  color: white;
+  content: "\f103";
+  
+}
+.mdi-star-outline:before {
+    content: "\f103"; }
+  
+
+.container{
+    position: relative;
+}
+.container>.vjs-icon-pause{
+
+    height: 128px;
+    left: 86%;
+    margin: -120px 50 0 -190px;
+    position: absolute;
+    top: 92%;
+    width: 0px;
+    z-index: 1; 
+    opacity: 1;
+    cursor: pointer;
+}
+.container>.vjs-icon-play{
+
+height: 128px;
+left: 86%;
+margin: -120px 50 0 -190px;
+position: absolute;
+top: 92%;
+width: 0px;
+z-index: 1; 
+opacity: 1;
+cursor: pointer;
+}
+.vjs-icon-pause{
+cursor: pointer;
+font-family: VideoJS;
+font-weight: normal;
+font-style: normal;
+font-size: 1.8em;
+vertical-align: middle;
+ 
+
+}
+
+.vjs-icon-play{
+cursor: pointer;
+font-family: VideoJS;
+font-weight: normal;
+font-style: normal;
+font-size: 1.8em;
+
+}
+.vjs-icon-next-item{
+cursor: pointer;
+font-family: VideoJS;
+font-weight: normal;
+font-style: normal;
+font-size: 1.8em;
+
+}
+
+.vjs-icon-previous-item{
+cursor: pointer;
+font-family: VideoJS;
+font-weight: normal;
+font-style: normal;
+font-size: 1.8em;
+}
+
+@keyframes fade1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+   opacity: 1;
+  }
+}
+
+@keyframes fade2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+   opacity: 1;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  
+    <button id="but" onclick="add()">ddddd</button>
+    
+
+<div class="container">
+  <video-js id="my_video" class="vjs-default-skin" controls preload="auto" width="500" height="300" autoplay >
+    <source src="easy.mp4" type="video/mp4">
+  </video-js>
+  <div class="player-buttons"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css">
+<!--mdi mdi-4px mdi-star-outline-->
+
+<!--<i id="fav_button_icon" class="vjs-icon-pause vjs-icon-play"  title="Hold" onclick="changeFavButtonClass()"></i>-->
+
+</div>
+
+  
+  <script src="video.js"></script>
+  <script src="videojs-http-streaming.js"></script>
+  
+  <script>
+   
+var arr = new Array();
+
+
+
+              const timer = setInterval(() => {
+               
+  document.getElementById('but').click();
+  
+}, 30000);
+
+function disablegetUsers(){
+    window.getUsers = function(){};
+}
+var functionHolder;
+function disablegetUsers(){
+    if(!functionHolder) functionHolder = window.getUsers;
+    window.getUsers = function(){};
+}
+
+function enableDoSomething(){
+    window.getUsers = functionHolder;
+}
+
+
+
+function increment() {
+
+  var num = 1 
+  return num
+}
+function func1() {
+    window.value=90;
+  }
+
+  function n(){  
+    var r = ++window.value;//accessing global variable from other function  
+    alert(r)
+    }  
+  
+
+function getUsers() {
+  var g = window.value = 1
+ 
+  let ay = arr.indexOf(window.nowplaying);
+
+var changeplay = arr[ay+1]
+
+if (changeplay !== undefined){
+ 
+  
+var player = videojs(document.querySelector('.video-js'));
+const spaced = changeplay.split('').join(' ');
+document.querySelector('.vjs-live-control').innerHTML = spaced;
+player.src({
+              src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+changeplay+"/playlist.m3u8",
+              type: 'application/x-mpegURL',
+              errorDisplay: false
+          });
+
+          
+
+player.play();
+
+++window.value
+var y = window.nowplaying = changeplay
+var g = ++window.value
+
+
+ 
+}
+
+else{
+  var g = window.value = 1
+
+}
+
+        }
+  
+  /*window.value=1;
+  
+  if (window.rest !== undefined){
+    
+  
+ var fq = window.rest - 1
+ 
+   
+ var gq = fq - arr.length
+var twice = arr.length - gq
+      
+let next = arr[arr.length - 1]
+
+if (next !== undefined && twice == 2){
+
+  var fq = window.rest - twice + twice
+ 
+   
+ var gq = fq - arr.length
+
+      
+let next = arr[arr.length - 1]
+
+var player = videojs(document.querySelector('.video-js'));
+    
+  
+  player.src({
+                src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+next+"/playlist.m3u8",
+                type: 'application/x-mpegURL'
+            });
+           
+  player.play();
+  window.rest=++window.rest} 
+
+
+
+
+
+else if (next !== undefined && gq <= arr.length){
+
+    var player = videojs(document.querySelector('.video-js'));
+    
+    
+  player.src({
+                src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+next+"/playlist.m3u8",
+                type: 'application/x-mpegURL'
+            });
+           
+  player.play();
+  window.rest=++window.rest} 
+
+
+else if (next !== undefined && gq <= arr.length){
+  alert("nobro")
+   
+}
+
+
+
+}
+
+ 
+  
+  
+
+    else{
+      
+      /* var request = new XMLHttpRequest();
+request.open('GET', 'http://localhost:6969/users', false);  // `false` makes the request synchronous
+request.send(null);
+ const geek = request.responseText;
+ arr.push(geek)
+  
+ var player = videojs(document.querySelector('.video-js'));
+ 
+  player.src({
+                src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+geek+"/playlist.m3u8",
+                type: 'application/x-mpegURL'
+            });
+
+  player.play();
+  
+
+} }*/
+
+function add() {
+  
+  var request = new XMLHttpRequest();
+request.open('GET', 'http://192.168.8.114:6969/users', false);  // `false` makes the request synchronous
+request.send(null);
+ const geek = request.responseText;
+ arr.push(geek)
+ window.nowplaying = String(geek)
+ const spaced = geek.split('').join(' ');
+document.querySelector('.vjs-live-control').innerHTML = spaced;
+ var player = videojs(document.querySelector('.video-js'));
+ 
+ 
+  player.src({
+                src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+geek+"/playlist.m3u8",
+                type: 'application/x-mpegURL',
+                errorDisplay: false
+            });
+
+  player.play();
+
+  var request = new XMLHttpRequest();
+        request.open('GET', 'http://192.168.8.114:6969/views', false);  // `false` makes the request synchronous
+        request.send(null);
+    
+
+  let viewcount = request.responseText;
+ let space = 'ㅤㅤㅤ'
+ let daced = viewcount.split('').join(' ');
+ document.querySelector('.vjs-live-control').innerHTML = spaced+space+daced
+
+
+}
+var num = 1
+function previous() {
+  
+  /*let prev = (arr[arr.length -2])
+if (prev !== undefined){
+  
+  var size = arr.length
+  var g = ++window.value
+  if (g <= size){
+  let prev = (arr[arr.length -g])
+  var g = g+2
+  window.rest = g
+  var player = videojs(document.querySelector('.video-js'));
+
+ player.src({
+               src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+prev+"/playlist.m3u8",
+               type: 'application/x-mpegURL'
+           });
+
+ player.play();
+}}
+if (g > size){}
+if (prev == undefined){
+  
+}*/
+var g = window.value = 1
+let ay = arr.indexOf(window.nowplaying);
+
+var changeplay = arr[ay-window.value]
+
+if (changeplay !== undefined){
+ 
+  
+var player = videojs(document.querySelector('.video-js'));
+const spaced = changeplay.split('').join(' ');
+document.querySelector('.vjs-live-control').innerHTML = spaced;
+player.src({
+              src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+changeplay+"/playlist.m3u8",
+              type: 'application/x-mpegURL',
+              errorDisplay: false
+          });
+
+player.play();
+
+
+var y = window.nowplaying = changeplay
+
+
+
+
+
+}
+
+else{
+  var g = window.value = 1
+
+}
+
+
+
+
+}
+
+function disableBtn() {
+    document.getElementById("but").disabled = true;
+}
+
+function enableBtn() {
+    document.getElementById("but").disabled = false;
+}    
+
+function changeFavButtonClass(){
+  if ( document.getElementById("my_button_icon").className == 'vjs-icon-pause' ){
+    disableBtn()
+    document.getElementById("my_button_icon").setAttribute('title', 'Seek');
+  document.getElementById("my_button_icon").className = 'vjs-icon-play';
+}
+  else{
+    enableBtn()
+    document.getElementById("my_button_icon").setAttribute('title', 'Hold');
+    document.getElementById("my_button_icon").className = 'vjs-icon-pause';
+  
+  
+  }
+}
+function skip(){
+  getUsers()
+}
+
+
+window.value = 1
+
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://192.168.8.114:6969/users', false);  // `false` makes the request synchronous
+        request.send(null);
+        
+ const geek = request.responseText;
+ arr.push(geek)
+window.nowplaying = geek
+
+    var player = videojs('my_video', {
+
+});
+
+
+    var myButon = player.controlBar.addChild('button', {}, 0);
+      var myButonDom = myButon.el();
+
+      var myButtton = player.controlBar.addChild('button', {}, 0);
+      var myButttonDom = myButtton.el();  
+
+      var myButton = player.controlBar.addChild('button', {}, 0);
+      var myButtonDom = myButton.el();
+
+      myButttonDom.innerHTML = '<span id="fav_button_icon" class="vjs-icon-previous-item"  title="Back" onclick="previous()"></span>';
+      myButtonDom.innerHTML = '<span id="my_button_icon" class="vjs-icon-pause vjs-icon-play"  title="Hold" onclick="changeFavButtonClass()" "></span>';
+      myButonDom.innerHTML = '<span id="fav_button_icon" class=" vjs-icon-next-item"  title="Skip" onclick="skip()" "></span>';
+  
+    //disables click
+    player.player_.handleTechClick_ = function() {
+    
+    };
+    player.PlayToggle = function() {};
+    //mutes player
+    player.muted(true);
+    
+   
+   // let sleep = ms => {  
+//return new Promise(resolve => setTimeout(resolve, ms));  
+//};  
+
+    //sleep(5000).then(() => {     
+
+    var player = videojs(document.querySelector('.video-js'));
+    const spaced = geek.split('').join(' ');
+
+
+
+  player.src({
+                src: "https://edge8-hel.live.mmcdn.com/live-hls/amlst:"+geek+"/playlist.m3u8",
+                type: 'application/x-mpegURL',/*video type*/
+                errorDisplay: false
+            });
+
+  player.play();
+
+  var request = new XMLHttpRequest();
+        request.open('GET', 'http://192.168.8.114:6969/views', false);  // `false` makes the request synchronous
+        request.send(null);
+    
+  
+ const viewcount = request.responseText;
+ const space = 'ㅤㅤㅤ'
+ const daced = viewcount.split('').join(' ');
+ document.querySelector('.vjs-live-control').innerHTML = spaced+space+daced
+
+
+
+//})  
+
+
+
+
+
+  </script>
+  
+</body>
+</html>
