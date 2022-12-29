@@ -1,147 +1,208 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=utf-8 />
-<title>stream</title>
-  
-  <!--
-
-  Uses the latest versions of video.js and videojs-http-streaming.
-
-  To use specific versions, please change the URLs to the form:
-
-  <link href="https://unpkg.com/video.js@6.7.1/dist/video-js.css" rel="stylesheet">
-  <script src="https://unpkg.com/video.js@6.7.1/dist/video.js"></script>
-  <script src="https://unpkg.com/@videojs/http-streaming@0.9.0/dist/videojs-http-streaming.js"></script>
-
-  -->
-
-  <link href="video-js.css" rel="stylesheet">
-  <style>
-    .iframe  {
-      overflow: hidden;
-      resize: both;
-    }
-
-
-:root {
-color-scheme: light dark;
-overflow:clipped;
-}
-body {
-overflow: hidden;
-}
-#yois { display: none;}
-#but { display: none;}
-#togglePipButton { display: none;}
-.mdi-star{
-  animation:fade2 1s linear;
-  display:table;
-    width:auto;
-    position:relative;
-    width:50%;
-    color: white;
-    
-}
-.mdi-star-outline{
-  color: white;
-  content: "\f103";
-  
-}
-.mdi-star-outline:before {
-    content: "\f103"; }
-  
-
-.container{
-    position: relative;
-}
-.container>.vjs-icon-pause{
-
-    height: 128px;
-    left: 86%;
-    margin: -120px 50 0 -190px;
-    position: absolute;
-    top: 92%;
-    width: 0px;
-    z-index: 1; 
-    opacity: 1;
-    cursor: pointer;
-}
-.container>.vjs-icon-play{
-
-height: 128px;
-left: 86%;
-margin: -120px 50 0 -190px;
-position: absolute;
-top: 92%;
-width: 0px;
-z-index: 1; 
-opacity: 1;
-cursor: pointer;
-}
-.vjs-icon-pause{
-cursor: pointer;
-font-family: VideoJS;
-font-weight: normal;
-font-style: normal;
-font-size: 1.8em;
-vertical-align: middle;
- 
-
-}
-
-.vjs-icon-play{
-cursor: pointer;
-font-family: VideoJS;
-font-weight: normal;
-font-style: normal;
-font-size: 1.8em;
-
-}
-.vjs-icon-next-item{
-cursor: pointer;
-font-family: VideoJS;
-font-weight: normal;
-font-style: normal;
-font-size: 1.8em;
-
-}
-
-.vjs-icon-previous-item{
-cursor: pointer;
-font-family: VideoJS;
-font-weight: normal;
-font-style: normal;
-font-size: 1.8em;
-}
-
-@keyframes fade1 {
-  0% {
-    opacity: 0;
-  }
-  100% {
-   opacity: 1;
-  }
-}
-
-@keyframes fade2 {
-  0% {
-    opacity: 0;
-  }
-  100% {
-   opacity: 1;
-  }
-}
-
-</style>
+  <title>3tabs</title>
 </head>
-<body>
+<style>
+:root {
+  color-scheme: light dark;
+}
+body {margin:0;}
 
-  
-    
-    
-  <h1> noooo </h1>
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
-  
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+</style>
+  <style>
+body {
+  background-image: url('ggl.webp');
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+}
+}
+</style>
+<body style="text-align:center;">
+<div class="navbar">
+    <button onclick="removeall()">
+        Clear	
+    </button>
+    <button onclick="removefirst()">
+        Remove first
+    </button>
+    <button onclick="removelast()">
+        Remove Last
+    </button>
+<!-- <button onclick="send()">
+        send
+    </button> -->
+<button onclick="up()">Up</button>
+<button onclick="down()">Down</button>
+<button onclick="scrollWin()">Skip</button>
+<button class="open">GO!</button>
+</div>
+
+    <script>
+        function r1() {
+            let result= confirm("are you sure?")
+            if (result==true) {
+                document.getElementById("1frame").src
+                    = "https://google.com/";
+            } else {}
+            }
+        function r2() {
+            let result= confirm("are you sure?")
+            if (result==true) {
+                document.getElementById("2frame").src
+                    = "https://google.com/";
+            } else {}
+            }
+        function r3() {
+            let result= confirm("are you sure?")
+            if (result==true) {
+                document.getElementById("2frame").src
+                    = "https://google.com/";
+            } else {}
+            }
+        function ra() {
+            let result= confirm("are you sure?")
+            if (result==true) {
+            document.getElementById("1frame").src
+                = "https://google.com/";
+            document.getElementById("2frame").src
+                = "https://google.com/";
+            document.getElementById("3frame").src
+                = "https://google.com/";
+            } else {}
+            }
+        function myFunction() {
+            let userdata= prompt("Enter site name", "http://");
+            if (userdata != null) {
+                const ifrm = document.createElement("iframe");
+                ifrm.setAttribute("src", userdata);
+                ifrm.style.width = "1620px";
+                ifrm.style.height = "880px";
+                document.body.appendChild(ifrm);
+            } else {}
+            }
+
+        function goog() {
+            var ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", "http://google.com");
+            ifrm.style.width = "1620px";
+            ifrm.style.height = "880px";
+            document.body.appendChild(ifrm);          
+            }
+        function removelast() {
+                const n = document.querySelectorAll('iframe').length;
+                const iframe = document.querySelectorAll('iframe')[n-1];
+                iframe.remove();
+            }
+        function removefirst() {
+                var iframe = document.querySelector('iframe');
+                iframe.remove();
+            }
+        function removeall() {
+            let result= confirm("Remove all frames?")
+            if (result==true) {
+            document.querySelectorAll('iframe')
+                .forEach(iframe => iframe.remove());
+            } else {}
+            }
+        function down() {
+            window.scrollBy(0, 862);
+            }
+        function up() {
+            window.scrollBy(0, -862);
+            }
+        function scrollWin() {
+            let result=prompt("Skip to frame?")
+            let sub = result - 3
+            if (result <= 0) {
+            window.scrollTo(0, result * 835);
+            }
+            if (result == 1) {
+            window.scrollTo(0, 862);
+            }
+            if (result >=2 ) {
+            window.scrollTo(0, result*862+26);
+            }
+            if (result ==3 ) {
+            window.scrollTo(0, result*862+55);
+            }
+            if (result ==4 ) {
+            window.scrollTo(0, result*862+55+27);
+            }
+            if (result >=5 ) {
+            window.scrollTo(0, result*862+55+27*sub);
+            }
+            else {}
+            }
+// Bind "click" event to <button>
+document.querySelector(".open").onclick = openIframe;
+
+// Event handler passes event object by default
+function openIframe(event) {
+  // Prompt user for url
+  let url = prompt("Enter site name", "https://google.com");
+  // If url isn't null...
+  if (url != null) {
+    // Create <iframe> and <button>
+    const ifrm = document.createElement("iframe");
+    const btn = document.createElement("button");
+    // Add attributes and styles to both elements
+    ifrm.src = url;
+    ifrm.style.display = "block";
+    ifrm.style.width = "98%";
+    ifrm.style.minHeight = "100vh";
+    btn.style.display = "block";
+    btn.textContent = "Remove";
+    // Append <button> then <iframe> to <body>
+    document.body.append(btn, ifrm);
+    // Bind "click" event to <button>
+    btn.onclick = function(event) {
+      // Find the element that follows <button> (ie <iframe>) and remove it
+      this.nextElementSibling.remove();
+      // <button> removes itself
+      this.remove();
+    }
+  }
+}
+window.onbeforeunload = function() {
+   return 'Do you really want to leave this page?';
+}
+function send() {
+var iframe_window = window.frames["ifrm"];
+ifrm.contentDocument.body.focus();
+}
+
+</script>
+<Body>  
+
+
 </body>
 </html>
